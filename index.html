@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سنتر العلوم</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <!-- استدعاء خط Cairo لجعل التصميم احترافي -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- الشريط الجانبي -->
+      <aside class="sidebar" id="sidebar">
+        <div class="logo">
+          <h2>إدارة سنتر العلوم</h2>
+        </div>
+        <nav class="nav-menu">
+          <a href="#" class="active">📊 قسم المدرسين</a>
+          <a href="#" class="disabled">👥 قسم الطلاب (قريباً)</a>
+          <a href="#" class="disabled">⚙️ الإعدادات</a>
+        </nav>
+      </aside>
+
+      <!-- المحتوى الرئيسي -->
+      <main class="main-content">
+        <header class="top-header">
+          <div class="header-right">
+            <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+            <h1>لوحة التحكم > قسم المدرسين</h1>
+          </div>
+          <button class="btn-primary" onclick="openModal('teacherModal')">
+            ➕ إضافة مدرس جديد
+          </button>
+        </header>
+
+        <!-- مكان عرض المدرسين -->
+        <section class="teachers-grid" id="teachersGrid">
+          <!-- سيتم توليد المدرسين هنا بواسطة الجافا سكريبت -->
+        </section>
+
+        <!-- مكان عرض تفاصيل المدرس (المجموعات والطلاب) عند الضغط عليه -->
+        <section
+          class="details-section"
+          id="detailsSection"
+          style="display: none"
+        >
+          <div class="details-header">
+            <h2 id="selectedTeacherName">مجموعات المدرس:</h2>
+            <button class="btn-secondary" onclick="openModal('groupModal')">
+              ➕ إضافة مجموعة
+            </button>
+          </div>
+          <div class="groups-container" id="groupsContainer">
+            <!-- سيتم توليد المجموعات والطلاب هنا -->
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- نافذة إضافة مدرس جديد -->
+    <div class="modal" id="teacherModal">
+      <div class="modal-content">
+        <h3>إضافة مدرس جديد</h3>
+        <input type="text" id="teacherNameInput" placeholder="اسم المدرس" />
+        <div class="modal-actions">
+          <button class="btn-primary" onclick="addTeacher()">حفظ</button>
+          <button class="btn-danger" onclick="closeModal('teacherModal')">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة إضافة مجموعة جديدة -->
+    <div class="modal" id="groupModal">
+      <div class="modal-content">
+        <h3>إضافة مجموعة جديدة</h3>
+        <input
+          type="text"
+          id="groupNameInput"
+          placeholder="اسم المجموعة (مثلاً: أولى ثانوي)"
+        />
+        <input
+          type="number"
+          id="monyMonthInput"
+          min="0"
+          placeholder="سعر الشهر"
+        />
+        <input
+          type="text"
+          id="selectedTimeInput"
+          min="0"
+          placeholder="الميعاد (مثلا: 7م)"
+        />
+        <div class="modal-actions">
+          <button class="btn-primary" onclick="addGroup()">حفظ</button>
+          <button class="btn-danger" onclick="closeModal('groupModal')">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة إضافة طالب جديد -->
+    <div class="modal" id="studentModal">
+      <div class="modal-content">
+        <h3>إضافة طالب جديد</h3>
+        <input
+          type="text"
+          id="studentNameInput"
+          placeholder="اسم الطالب الثلاثي"
+        />
+        <div class="modal-actions">
+          <button class="btn-primary" onclick="addStudent()">حفظ</button>
+          <button class="btn-danger" onclick="closeModal('studentModal')">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
